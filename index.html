@@ -36,7 +36,42 @@
         <meta property="og:title" content="Viswanadhapalli Sujay - Software Developer, IITian">
         <meta property="og:image" content="Images/profile.jpg">
     </head>
-    
+    <!-- Clock Display -->
+<div id="clock"></div>
+
+<!-- JavaScript for Live Clock -->
+<script>
+function updateClock() {
+    let now = new Date();
+    let timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    let dateString = now.toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' });
+
+    document.getElementById("clock").innerHTML = `${dateString} | ${timeString}`;
+}
+
+// Update clock every second
+setInterval(updateClock, 1000);
+updateClock(); // Run immediately to avoid delay
+</script>
+
+<!-- CSS for Aesthetic Placement -->
+<style>
+#clock {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 123, 255, 0.8); /* Blue semi-transparent */
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+    z-index: 1000;
+}
+</style>
+
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
     <nav id="myNavbar" class="navbar navbar-expand-lg navbar-dark sticky-top">
@@ -71,7 +106,9 @@
                 <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
                     <a class="nav-link" href="#activities">Activities</a>
                 </li>
-                
+                <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
                 
             </ul>
         </div>
@@ -712,6 +749,78 @@
     </ul>
 </section>
 <!-- Activities Section END -->
+
+<!-- Contact Section START -->
+<section id="contact">
+    <div class="h1 text-center" data-aos="zoom-in-up">
+        <i class="fas fa-envelope mr-2"></i> Get in <b>Touch</b>
+    </div>
+    <div class="container p-3" data-aos="zoom-in-down">
+        <form id="contactForm" action="https://formspree.io/f/xpwpwjey" method="POST" class="mx-auto" style="max-width: 500px;">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Your message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+        </form>
+    </div>
+</section>
+<!-- Contact Section END -->
+
+<!-- JavaScript for Form Validation & Submission -->
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let message = document.getElementById("message").value.trim();
+
+    if (name === "" || email === "" || message === "") {
+        alert("Please fill out all fields.");
+        return;
+    }
+
+    if (!validateEmail(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    // Send form data to Formspree
+    let formData = new FormData(this);
+
+    try {
+        let response = await fetch(this.action, {
+            method: "POST",
+            body: formData,
+            headers: { "Accept": "application/json" }
+        });
+
+        if (response.ok) {
+            alert("Message sent successfully!");
+            this.reset();
+        } else {
+            alert("Oops! There was a problem submitting your form.");
+        }
+    } catch (error) {
+        alert("An error occurred. Please try again later.");
+    }
+});
+
+// Email validation function
+function validateEmail(email) {
+    let re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(email);
+}
+</script>
 
 
     <!-- Footer -->
