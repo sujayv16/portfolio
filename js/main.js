@@ -1,3 +1,67 @@
+function initClock() {
+  const clock = document.getElementById("clock");
+  if (!clock) {
+    return;
+  }
+
+  const updateClock = () => {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+    const dateString = now.toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" });
+    clock.textContent = `${dateString} | ${timeString}`;
+  };
+
+  updateClock();
+  window.setInterval(updateClock, 1000);
+}
+
+function initContactForm() {
+  const form = document.getElementById("contactForm");
+  if (!form) {
+    return;
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById("name")?.value.trim() ?? "";
+    const email = document.getElementById("email")?.value.trim() ?? "";
+    const message = document.getElementById("message")?.value.trim() ?? "";
+
+    if (!name || !email || !message) {
+      window.alert("Please fill out all fields.");
+      return;
+    }
+
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+      window.alert("Please enter a valid email address.");
+      return;
+    }
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
+      window.alert("Message sent successfully!");
+      form.reset();
+    } catch (error) {
+      window.alert("An error occurred. Please try again later.");
+    }
+  });
+}
+
+document.addEventListener("portfolio:components-loaded", () => {
+  initClock();
+  initContactForm();
+});
 jQuery(document).ready(function ($) {
   /** Animation Configurations */
   const animationConfig = {

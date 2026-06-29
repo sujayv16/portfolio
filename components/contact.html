@@ -1,0 +1,31 @@
+<section id="contact" class="section section--soft">
+  <div class="container">
+    <header class="section__header reveal" data-aos="fade-up">
+      <span class="section__eyebrow"><i class="fas fa-envelope" aria-hidden="true"></i> Contact</span>
+      <h2 class="section__title">A lighter, cleaner way to get in touch.</h2>
+      <p class="section__subtitle">The form still submits to Formspree and the contact links remain available in the hero.</p>
+    </header>
+    <div class="glass-card section-pad-md">
+      <form id="contactForm" action="https://formspree.io/f/xpwpwjey" method="POST" class="stack" novalidate>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" autocomplete="name" required>
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" placeholder="Tell me about your idea, role, or project" required></textarea>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn--primary" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Send Message</button>
+          <a class="btn btn--secondary" href="mailto:contact.sujayv16@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> Email Directly</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
