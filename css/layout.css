@@ -34,11 +34,28 @@
 }
 
 .site-brand__mark {
-  width: 2.3rem;
-  height: 2.3rem;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(116, 168, 255, 1), rgba(89, 220, 200, 1));
-  box-shadow: 0 10px 30px rgba(89, 220, 200, 0.22);
+    width: 2.3rem;
+    height: 2.3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(116,168,255,1),
+        rgba(89,220,200,1)
+    );
+
+    box-shadow: 0 10px 30px rgba(89,220,200,.22);
+
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: .9rem;
+    color: white;
+    line-height: 1;
 }
 
 .site-nav__menu {
@@ -87,14 +104,14 @@
 }
 
 .hero {
-  padding-top: clamp(3rem, 6vw, 5rem);
+    padding-top: 0;
+    padding-bottom: clamp(4rem, 8vw, 7rem);
 }
 
 .hero__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.9fr);
-  align-items: center;
-  gap: clamp(2rem, 5vw, 4rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.9fr);
+    align-items: start;
 }
 
 .hero__content {
@@ -190,6 +207,7 @@
 .courses__grid,
 .skills__grid,
 .education__grid {
+    overflow: visible;
   display: grid;
   gap: 1rem;
 }
@@ -218,37 +236,41 @@
 }
 
 .timeline {
-  position: relative;
-  padding-left: 1.2rem;
+    position: relative;
+    padding-left: 2rem;
 }
 
 .timeline::before {
-  content: "";
-  position: absolute;
-  top: 0.5rem;
-  bottom: 0.5rem;
-  left: 0.35rem;
-  width: 1px;
-  background: linear-gradient(180deg, rgba(116, 168, 255, 0.5), rgba(89, 220, 200, 0.2));
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0.8rem;
+    width: 2px;
+    background: linear-gradient(
+        180deg,
+        rgba(116,168,255,.7),
+        rgba(89,220,200,.35)
+    );
 }
 
 .timeline__item {
-  position: relative;
-  padding-left: 1.5rem;
+    position: relative;
+    padding-left: 0.8rem;
 }
 
 .timeline__item::before {
-  content: "";
-  position: absolute;
-  top: 0.45rem;
-  left: -0.05rem;
-  width: 0.85rem;
-  height: 0.85rem;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  box-shadow: 0 0 0 6px rgba(116, 168, 255, 0.08);
+    content: "";
+    position: absolute;
+    top: 1.2rem;
+    left: -1.5rem;      /* <-- move until it sits on the line */
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    border: 3px solid var(--bg);
+    z-index: 2;
 }
-
 .site-footer {
   padding: 1.2rem 0 2.5rem;
   color: var(--muted);

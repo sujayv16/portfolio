@@ -46,49 +46,67 @@ const PORTFOLIO_DATA = {
     `,
   },
   experience: [
-    {
-      logo: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Indian_Space_Research_Organisation_Logo.svg",
-      role: "Project Member",
-      company: "ISRO Sponsored Project",
-      duration: "Aug 2025 - Dec 2025",
-      location: "Indian Institute of Technology Jodhpur, Jodhpur, India",
-      description: "Developed telemetry analysis modules for spacecraft communication using the MIL-STD-1553B protocol and built backend services for protocol validation, anomaly detection, and subsystem trend analysis.",
-      bullets: [
-        "Implemented cycle inference, jitter analysis, margin violation detection, and communication fault analysis from Bus Monitor logs.",
-        "Designed backend services for protocol validation by comparing live transactions with historical communication records.",
-        "Built subsystem parameter extraction and visualization modules for telemetry trend analysis and anomaly detection.",
-        "Collaborated in a two-member team to develop scalable backend APIs and data processing workflows.",
-      ],
-    },
-    {
-      logo: "Images/vantech.png",
-      role: "Software Developer Intern",
-      company: "VanTech Med",
-      duration: "May 2025 - Jul 2025",
-      location: "Vancouver, BC, Canada (Remote)",
-      description: "Built backend services and contributed to software architecture for healthcare applications, including REST APIs, migration work, and full-stack feature delivery for the Sundae platform.",
-      bullets: [
-        "Implemented REST APIs, system migration, and full-stack enhancements for the Sundae platform.",
-        "Built features including reminiscence mode, daily affirmations, personalized settings, and multilingual support.",
-        "Improved application responsiveness and performance while contributing to vital-sign integration prototypes.",
-        "Collaborated with cross-functional teams to build scalable healthcare software solutions.",
-      ],
-    },
-    {
-      logo: "https://media.licdn.com/dms/image/v2/D4D0BAQGvr-KAY2ou5Q/company-logo_200_200/company-logo_200_200/0/1699684113017?e=2147483647&v=beta&t=eQaHbjfQv5CC6YRZWD4Q7QszirwxvI8nYsgSZoyn9W0",
-      role: "Artificial Intelligence Intern",
-      company: "Phoenix Labs",
-      duration: "Sep 2024 - Mar 2025",
-      location: "Dallas, United States (Remote)",
-      description: "Developed machine learning solutions involving preprocessing, feature engineering, model optimization, and AI-driven analysis workflows.",
-      bullets: [
-        "Built predictive models using TensorFlow and automated data processing workflows.",
-        "Worked on AI-powered genetic data analysis to identify meaningful patterns and trends.",
-        "Debugged complex data pipelines and optimized machine learning workflows.",
-        "Collaborated with the AI team to deliver scalable machine learning solutions.",
-      ],
-    },
-  ],
+  {
+    logo: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Indian_Space_Research_Organisation_Logo.svg",
+    role: "Project Member",
+    company: "ISRO Sponsored Project",
+    duration: "Aug 2025 - Dec 2025",
+    location: "Indian Institute of Technology Jodhpur, Jodhpur, India",
+    description: "Developed telemetry analysis modules for spacecraft communication using the MIL-STD-1553B protocol and built backend services for protocol validation, anomaly detection, and subsystem trend analysis.",
+    bullets: [
+      "Implemented cycle inference, jitter analysis, margin violation detection, and communication fault analysis from Bus Monitor logs.",
+      "Designed backend services for protocol validation by comparing live transactions with historical communication records.",
+      "Built subsystem parameter extraction and visualization modules for telemetry trend analysis and anomaly detection.",
+      "Collaborated in a two-member team to develop scalable backend APIs and data processing workflows."
+    ]
+  },
+
+  {
+    logo: "Images/vantech.png",
+    role: "Software Developer Intern",
+    company: "VanTech Med",
+    duration: "May 2025 - Jul 2025",
+    location: "Vancouver, BC, Canada (Remote)",
+    description: "Built backend services and contributed to software architecture for healthcare applications, including REST APIs, migration work, and full-stack feature delivery for the Sundae platform.",
+    bullets: [
+      "Implemented REST APIs, system migration, and full-stack enhancements for the Sundae platform.",
+      "Built features including reminiscence mode, daily affirmations, personalized settings, and multilingual support.",
+      "Improved application responsiveness and performance while contributing to vital-sign integration prototypes.",
+      "Collaborated with cross-functional teams to build scalable healthcare software solutions."
+    ],
+    links: [
+      {
+        label: "Internship Certificate",
+        url: "https://drive.google.com/file/d/1RoVQoF5zbWZv4J6NWnawzfDhXIe-4G99/view?usp=drive_link"
+      }
+    ]
+  },
+
+  {
+    logo: "https://media.licdn.com/dms/image/v2/D4D0BAQGvr-KAY2ou5Q/company-logo_200_200/company-logo_200_200/0/1699684113017?e=2147483647&v=beta&t=eQaHbjfQv5CC6YRZWD4Q7QszirwxvI8nYsgSZoyn9W0",
+    role: "Artificial Intelligence Intern",
+    company: "Phoenix Labs",
+    duration: "Sep 2024 - Mar 2025",
+    location: "Dallas, United States (Remote)",
+    description: "Developed machine learning solutions involving preprocessing, feature engineering, model optimization, and AI-driven analysis workflows.",
+    bullets: [
+      "Built predictive models using TensorFlow and automated data processing workflows.",
+      "Worked on AI-powered genetic data analysis to identify meaningful patterns and trends.",
+      "Debugged complex data pipelines and optimized machine learning workflows.",
+      "Collaborated with the AI team to deliver scalable machine learning solutions."
+    ],
+    links: [
+      {
+        label: "Internship Certificate",
+        url: "https://drive.google.com/file/d/1JGsPUSDWZCwUHAFFue4T2ovac-8Sd6ms/view?usp=drive_link"
+      },
+      {
+        label: "Letter of Recommendation",
+        url: "https://drive.google.com/file/d/1cab_xR-EXWp_mmpu0jTfbXcgPJZRQ985/view?usp=drive_link"
+      }
+    ]
+  }
+],
   education: [
     { duration: "2022 - 2026", title: "Indian Institute of Technology, Jodhpur", location: "Jodhpur, Rajasthan", text: "Completed B.Tech in Computer Science and Engineering" },
     { duration: "2020 - 2022", title: "Sri Chaitanya Junior College", location: "Vijayawada, Andhra Pradesh", text: "12th Grade | Percentage: 94.6%" },
@@ -260,34 +278,62 @@ function renderAbout() {
 
 function renderExperience() {
   const grid = document.querySelector("[data-experience-grid]");
-  if (!grid) {
-    return;
-  }
+  if (!grid) return;
 
   grid.innerHTML = PORTFOLIO_DATA.experience
     .map((item, index) => `
-        <article class="experience-card reveal" data-aos="fade-up" data-aos-delay="${index * 70}">
-          <div class="meta-line meta-line--spaced">
-            <span class="pill pill--accent">${escapeHtml(item.duration)}</span>
-            <span class="pill">${escapeHtml(item.location)}</span>
+      <article class="experience-card reveal"
+               data-aos="fade-up"
+               data-aos-delay="${index * 70}">
+
+        <div class="meta-line meta-line--spaced">
+          <span class="pill pill--accent">${escapeHtml(item.duration)}</span>
+          <span class="pill">${escapeHtml(item.location)}</span>
+        </div>
+
+        <div class="flex-row">
+          <div class="project-card__image logo-frame">
+            <img src="${item.logo}" alt="${escapeHtml(item.company)} logo">
           </div>
-          <div class="flex-row">
-            <div class="project-card__image logo-frame">
-              <img src="${item.logo}" alt="${escapeHtml(item.company)} logo" loading="lazy">
-            </div>
-            <div>
-              <h3 class="experience-card__title">${escapeHtml(item.role)}</h3>
-              <div class="meta-line meta-line--top">
-                <span>${escapeHtml(item.company)}</span>
-              </div>
+
+          <div>
+            <h3 class="experience-card__title">${escapeHtml(item.role)}</h3>
+            <div class="meta-line meta-line--top">
+              <span>${escapeHtml(item.company)}</span>
             </div>
           </div>
-          <p class="text-block--top">${escapeHtml(item.description)}</p>
-          <ul class="experience-points">
-            ${item.bullets.map((bullet) => `<li class="pill list-pill">${escapeHtml(bullet)}</li>`).join("")}
-          </ul>
-        </article>
-      `)
+        </div>
+
+        <p class="text-block--top">${escapeHtml(item.description)}</p>
+
+        <ul class="experience-points">
+          ${item.bullets
+            .map(bullet => `<li class="pill list-pill">${escapeHtml(bullet)}</li>`)
+            .join("")}
+        </ul>
+
+        ${
+          item.links
+            ? `
+            <div class="card-actions" style="margin-top:1rem;">
+              ${item.links
+                .map(link => `
+                  <a class="btn btn--secondary"
+                     href="${link.url}"
+                     target="_blank"
+                     rel="noreferrer">
+                    <i class="fas fa-external-link-alt"></i>
+                    ${escapeHtml(link.label)}
+                  </a>
+                `)
+                .join("")}
+            </div>
+            `
+            : ""
+        }
+
+      </article>
+    `)
     .join("");
 }
 

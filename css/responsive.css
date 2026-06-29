@@ -70,9 +70,14 @@
     width: min(100% - 1.2rem, var(--max-width));
   }
 
-  .section {
+  .section:not(.hero) {
     padding: 4rem 0;
-  }
+}
+
+.hero.section {
+    padding-top: 0;
+    padding-bottom: 4rem;
+}
 
   .hero__title {
     font-size: clamp(2.5rem, 12vw, 4rem);
