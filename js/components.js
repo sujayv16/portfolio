@@ -151,6 +151,7 @@ const PORTFOLIO_DATA = {
     { icon: "fas fa-award", title: "Software Engineering", text: "Secured an A grade in the Software Engineering course in 2024." },
     { icon: "fas fa-medal", title: "NTSE Stage 1", text: "Ranked in the top 0.5% in the National Talent Search Examination Stage 1." },
     { icon: "fas fa-bolt", title: "JEE Success", text: "Cleared JEE Main and Advanced, securing among the top 1% of applicants." },
+    { icon: "fas fa-trophy", title: "INEA Hackathon", text: "Ranked 3rd in the Hackathon at INEA Youth Conclave 2022." },
     { icon: "fas fa-users-cog", title: "Joint Secretary", text: "Serving as Joint Secretary of Apno Campus Committee, Board of Student Welfare, IIT Jodhpur." },
     { icon: "fas fa-bullhorn", title: "Ignus PR", text: "Worked as Assistant Head, Public Relations for Ignus, IIT Jodhpur." },
     { icon: "fas fa-clipboard-list", title: "Aaftab PR & Marketing", text: "Worked as Assistant Head, Public Relations and Marketing for Aaftab, IIT Jodhpur." },

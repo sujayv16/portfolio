@@ -248,9 +248,10 @@ async function run() {
   
   const compiledContent = renderedParts.join("\n\n");
   
-  // 3. Inject compiled content into index.html
+  // 3. Inject compiled content from index.template.html into index.html
+  const templatePath = path.join(rootDir, "index.template.html");
   const indexHtmlPath = path.join(rootDir, "index.html");
-  let indexHtml = fs.readFileSync(indexHtmlPath, "utf8");
+  let indexHtml = fs.readFileSync(templatePath, "utf8");
   
   const rootRegex = /<div data-portfolio-root>([\s\S]*?)<\/div>/;
   const targetReplacement = `<div data-portfolio-root>\n${compiledContent}\n    </div>`;
