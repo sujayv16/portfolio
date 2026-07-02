@@ -193,7 +193,7 @@ const PORTFOLIO_DATA = {
 
 const shellFallbacks = {
   navbar: `<nav class="site-nav" id="siteNav" aria-label="Primary"><div class="container site-nav__inner"><a class="site-brand" href="#home" aria-label="Go to top"><span class="site-brand__mark" aria-hidden="true"><span class="site-brand__mark-text">VS</span></span><span>Viswanadhapalli Sujay</span></a><button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="siteMenu"><span></span><span></span><span></span></button><div class="site-nav__menu" id="siteMenu"><a class="site-nav__link" href="#home" data-section="home">Home</a><a class="site-nav__link" href="#about" data-section="about">About</a><a class="site-nav__link" href="#experience" data-section="experience">Experience</a><a class="site-nav__link" href="#education" data-section="education">Education</a><a class="site-nav__link" href="#skills" data-section="skills">Skills</a><a class="site-nav__link" href="#projects" data-section="projects">Projects</a><a class="site-nav__link" href="#courses" data-section="courses">Courses</a><a class="site-nav__link" href="#achievements" data-section="achievements">Achievements</a><a class="site-nav__link" href="#contact" data-section="contact">Contact</a></div></div></nav>`,
-  hero: `<section id="home" class="section hero"><div class="container hero__grid"><div class="hero__content reveal"><span class="profile-badge"><i class="fas fa-sparkles" aria-hidden="true"></i> Software Engineer · AI/ML · Research</span><div class="hero-title-row"><p class="eyebrow">Viswanadhapalli Sujay</p><h1 class="hero__title">Building <span class="text-gradient">reliable software</span> and practical AI systems.</h1></div><p class="hero__lead" data-hero-lead></p><div class="hero__actions"><a class="btn btn--primary" href="https://drive.google.com/file/d/1nzkvv2DBDO3b8IH9Ba2gcTU1K8L1hyWe/view?usp=sharing" target="_blank" rel="noreferrer">View CV</a><a class="btn btn--secondary" href="#projects">Explore Projects</a><a class="btn btn--ghost" href="#contact">Get in Touch</a></div><div class="hero__socials" data-hero-socials></div></div><div class="hero__visual reveal"><div class="hero__portrait float-slow"><img id="tilt" src="Images/profile.jpg" alt="Portrait of Viswanadhapalli Sujay" width="380" height="380"></div><div class="hero__stats" data-hero-stats></div></div></div></section>`,
+  hero: `<section id="home" class="section hero"><div class="container hero__grid"><div class="hero__content reveal"><span class="profile-badge"><i class="fas fa-sparkles" aria-hidden="true"></i> Software Engineer · AI/ML · Research</span><div class="hero-title-row"><h1 class="eyebrow">Viswanadhapalli Sujay</h1><h2 class="hero__title">Building <span class="text-gradient">reliable software</span> and practical AI systems.</h2></div><p class="hero__lead" data-hero-lead></p><div class="hero__actions"><a class="btn btn--primary" href="https://drive.google.com/file/d/1nzkvv2DBDO3b8IH9Ba2gcTU1K8L1hyWe/view?usp=sharing" target="_blank" rel="noreferrer">View CV</a><a class="btn btn--secondary" href="#projects">Explore Projects</a><a class="btn btn--ghost" href="#contact">Get in Touch</a></div><div class="hero__socials" data-hero-socials></div></div><div class="hero__visual reveal"><div class="hero__portrait float-slow"><img id="tilt" src="Images/profile.jpg" alt="Portrait of Viswanadhapalli Sujay" width="380" height="380"></div><div class="hero__stats" data-hero-stats></div></div></div></section>`,
   about: `<section id="about" class="section section--soft"><div class="container"><header class="section__header"><span class="section__eyebrow"><i class="fas fa-user-alt" aria-hidden="true"></i> About</span><h2 class="section__title">Graduate profile and professional background</h2></header><article class="about-card section-pad-md" data-about-story></article></div></section>`,
   experience: `<section id="experience" class="section"><div class="container"><header class="section__header"><span class="section__eyebrow"><i class="fas fa-briefcase" aria-hidden="true"></i> Experience</span><h2 class="section__title">Experience that spans software, AI, and applied research.</h2></header><div class="experience__grid" data-experience-grid></div></div></section>`,
   education: `<section id="education" class="section section--soft"><div class="container"><header class="section__header"><span class="section__eyebrow"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Education</span><h2 class="section__title">A timeline view of IIT Jodhpur and earlier academic milestones.</h2></header><div class="education__grid timeline" data-education-grid></div></div></section>`,
@@ -293,7 +293,7 @@ function renderExperience() {
 
         <div class="flex-row">
           <div class="project-card__image logo-frame">
-            <img src="${item.logo}" alt="${escapeHtml(item.company)} logo">
+            <img src="${item.logo}" alt="${escapeHtml(item.company)} logo" loading="lazy">
           </div>
 
           <div>
@@ -470,6 +470,13 @@ function initHeroRotator() {
 async function mountPortfolio() {
   const root = document.querySelector("[data-portfolio-root]");
   if (!root) {
+    return;
+  }
+
+  // If already pre-rendered in HTML, skip fetching components but set up client-side features
+  if (document.querySelector("#home")) {
+    initHeroRotator();
+    document.dispatchEvent(new CustomEvent("portfolio:components-loaded"));
     return;
   }
 

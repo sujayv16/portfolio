@@ -1,0 +1,16 @@
+{
+  "name": "Viswanadhapalli Sujay Portfolio",
+  "short_name": "Sujay Portfolio",
+  "description": "Official portfolio of Viswanadhapalli Sujay, a software developer, AI/ML enthusiast, and IIT Jodhpur student.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme-color": "#07111f",
+  "icons": [
+    {
+      "src": "Images/profile.jpg",
+      "sizes": "380x380",
+      "type": "image/jpeg"
+    }
+  ]
+}
